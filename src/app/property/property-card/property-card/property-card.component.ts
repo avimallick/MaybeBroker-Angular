@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-property-card',
@@ -6,9 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./property-card.component.css']
 })
 export class PropertyCardComponent {
-  Property: any = {
-    "Id": 1,
-    "Type": "House",
-    "Price": 12000
-  }
+@Input() property: any;
+constructor(private route: Router){}
+routerChange(e:number){
+  this.route.navigateByUrl("/property-detail/"+e);
+}
 }
